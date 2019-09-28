@@ -21,6 +21,7 @@ ls -ltr
 switchTo client2
 git pull --no-edit
 commitNewFile work2-2
+git pull
 git push
 ls -ltr
 echo DONE
