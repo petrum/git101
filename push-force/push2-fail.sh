@@ -14,7 +14,7 @@ switchTo client1
 #git reset --hard HEAD@{1}
 git reset --hard HEAD~1
 commitNewFile work1-1
-git push 
+git push -f
 
 ls -ltr
 
