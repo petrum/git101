@@ -1,4 +1,6 @@
 #!/bin/bash
+
+ROOT_DIR=~/tmp/git101
 set -e
 cd
 function createRemoteRepo {
@@ -12,17 +14,29 @@ function createRemoteRepo {
 function cloneRepo {
     REMOTE_NAME=$1
     LOCAL_NAME=$2
-    mkdir -p tmp
-    cd ~/tmp
-    rm -fr client1
+    mkdir -p $ROOT_DIR
+    cd $ROOT_DIR
+    rm -fr $LOCAL_NAME
     git clone ssh://petrum@nuc/home/petrum/tmp/$REMOTE_NAME $LOCAL_NAME
-    cd client1
+    cd $LOCAL_NAME
 }
+
+function switchTo {
+    cd $ROOT_DIR/$1
+}
+
 createRemoteRepo nuc ~/tmp/repo.git
 cloneRepo repo.git client1
 touch README
 git add .
 git commit -am'Added a README file'
 git push
-
+cloneRepo repo.git client2
+touch work2
+git add .
+git commit -am'Added a work2 file'
+git push
+switchTo client1
+git pull
+cd 
 echo DONE
