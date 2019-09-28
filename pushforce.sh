@@ -40,6 +40,7 @@ switchTo client1
 touch work1
 git add .
 git commit -am'Added a work1 file'
+git pull --no-edit
 git push
 
 echo DONE
