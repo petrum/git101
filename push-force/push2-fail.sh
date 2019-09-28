@@ -15,9 +15,9 @@ git commit -am'Added a work2 file'
 git push
 
 switchTo client1
-git reset ^HEAD --hard
+git reset --hard HEAD@{1}
 git commit -am'Removed the pusblished work1 file'
-
+git pull
 git push
 
 echo DONE
