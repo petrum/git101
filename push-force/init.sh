@@ -32,5 +32,4 @@ git add .
 git commit -am'Added a README file'
 git push
 cloneRepo repo.git client2
-
 echo DONE init
