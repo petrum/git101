@@ -13,13 +13,14 @@ git push
 switchTo client1
 #git reset --hard HEAD@{1}
 git reset --hard HEAD~1
-#git push # this fails
-git push -f
+commitNewFile work1-1
+git push 
+
 ls -ltr
 
 switchTo client2
+git pull --no-edit
 commitNewFile work2-2
-git pull
 git push
 ls -ltr
 echo DONE
