@@ -1,12 +1,28 @@
 #!/bin/bash
+set -e
 cd
-GIT_BARE_DIR=~/tmp/repo.git
-ssh nuc rm -fr $GIT_BARE_DIR
-ssh nuc mkdir -p $GIT_BARE_DIR
-#ls -ltr $GIT_BARE_DIR
+function createRemoteRepo {
+    SERVER=$1
+    GIT_BARE_DIR=$2
+    ssh nuc rm -fr $GIT_BARE_DIR
+    ssh nuc mkdir -p $GIT_BARE_DIR
+    ssh nuc "cd $GIT_BARE_DIR; git init --bare"
+}
 
-ssh nuc "cd $GIT_BARE_DIR; git init --bare"
-mkdir tmp
-cd ~/tmp
-rm -fr repo
-git clone ssh://petrum@nuc/home/petrum/tmp/repo.git
+function cloneRepo {
+    REMOTE_NAME=$1
+    LOCAL_NAME=$2
+    mkdir -p tmp
+    cd ~/tmp
+    rm -fr client1
+    git clone ssh://petrum@nuc/home/petrum/tmp/$REMOTE_NAME $LOCAL_NAME
+    cd client1
+}
+createRemoteRepo nuc ~/tmp/repo.git
+cloneRepo repo.git client1
+touch README
+git add .
+git commit -am'Added a README file'
+git push
+
+echo DONE
