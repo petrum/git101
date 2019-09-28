@@ -25,6 +25,13 @@ function switchTo {
     cd $ROOT_DIR/$1
 }
 
+function commitNewFile {
+    FILE=$1
+    touch $FILE
+    git add $FILE
+    git commit -am"Added the '$FILE' file"    
+}
+
 createRemoteRepo nuc ~/tmp/repo.git
 cloneRepo repo.git client1
 touch README

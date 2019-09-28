@@ -2,27 +2,24 @@
 . ./init.sh
 
 switchTo client1
-touch work1
-git add .
-git commit -am'Added a work1 file'
+commitNewFile work1
 git push
 
 switchTo client2
 git pull
-touch work2
-git add .
-git commit -am'Added a work2 file'
+commitNewFile work2
 git push
 
 switchTo client1
-git reset --hard HEAD@{1}
-#git pull
+#git reset --hard HEAD@{1}
+git reset --hard HEAD~1
+#git push # this fails
 git push -f
 ls -ltr
+
 switchTo client2
-touch work2-2
-git add .
-git commit -am'Added a work2-2 file'
+commitNewFile work2-2
+git pull
 git push
 ls -ltr
 echo DONE

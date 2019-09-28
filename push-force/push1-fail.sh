@@ -2,14 +2,10 @@
 . ./init.sh
 
 switchTo client2
-touch work2
-git add .
-git commit -am'Added a work2 file'
+commitNewFile work2
 git push
 switchTo client1
-touch work1
-git add .
-git commit -am'Added a work1 file'
+commitNewFile work1
 #git pull --no-edit
 git push
 echo DONE
