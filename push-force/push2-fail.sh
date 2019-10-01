@@ -8,14 +8,12 @@ commitNewFile work1
 git push
 
 switchTo client2
+git pull
 commitNewFile work2
-git push -f
-ls -ltr
+git push
 
 switchTo client1
-git pull --no-edit
-git push 
-ls -ltr
+git push
 
 switchTo client2
 git pull --no-edit
